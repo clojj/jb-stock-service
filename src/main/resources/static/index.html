@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="main.js"></script>
+</head>
+<body>
+<div id="elm"></div>
+<script>
+    // initialize with flags
+    var app = Elm.Main.init({
+        node: document.getElementById('elm'),
+    });
+
+    const eventSource = new EventSource('http://localhost:8080/stocks/ABC');
+
+    // Handler for events without an event type specified
+    eventSource.onmessage = (e) => {
+        console.log(e.data);
+        app.ports.stockupdate.send(JSON.parse(e.data));
+    };
+
+</script>
+</body>
+</html>

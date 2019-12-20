@@ -1,0 +1,9 @@
+
+GET http://localhost:8080/stocks/ABC
+Accept: text/event-stream
+Host: localhost:8080
+Cache-Control: no-cache
+
+
+###
+
